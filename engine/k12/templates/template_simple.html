@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Earnings Statement</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+
+            color: #000;
+        }
+
+        .outer-box {
+            border: 2px solid #000;
+            width: 750px;
+            margin: auto;
+            padding: 2px;
+        }
+
+        .inner-box {
+            border: 1px solid #000;
+            padding: 15px;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px double #000;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .company-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .info-item {
+            display: flex;
+        }
+
+        .label {
+            width: 120px;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 5px;
+        }
+
+        th {
+            background-color: #eee;
+            text-align: center;
+        }
+
+        td.amt {
+            text-align: right;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .totals-section {
+            border-top: 2px solid #000;
+            padding-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .net-pay-box {
+            border: 2px solid #000;
+            padding: 10px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8em;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-box">
+        <div class="inner-box">
+            <div class="header-section">
+                <div>
+                    <div class="company-name">__SCHOOL_NAME__</div>
+                    <div>__SCHOOL_ADDRESS__</div>
+                </div>
+                <div style="text-align: right;">
+                    <img src="__LOGO_DATA_URI__" style="height: 50px; display: block; margin-left: auto;">
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div>
+                    <div class="info-item"><span class="label">EMPLOYEE:</span> <span>__EMP_NAME__</span></div>
+                    <div class="info-item"><span class="label">EMP ID:</span> <span>__EMP_ID__</span></div>
+                    <div class="info-item"><span class="label">DEPT:</span> <span>ACADEMIC</span></div>
+                </div>
+                <div>
+                    <div class="info-item"><span class="label">PAY DATE:</span> <span>__PAY_DATE__</span></div>
+                    <div class="info-item"><span class="label">PERIOD:</span> <span>__PERIOD_START__ to
+                            __PERIOD_END__</span></div>
+                    <div class="info-item"><span class="label">CHECK NO:</span> <span>__ADVICE_ID__</span></div>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th width="40%">DESCRIPTION</th>
+                        <th width="15%">HOURS/RATE</th>
+                        <th width="20%">EARNINGS</th>
+                        <th width="25%">DEDUCTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Regular Wages</td>
+                        <td align="center">__HOURS_WORKED__ @ __HOURLY_RATE__</td>
+                        <td class="amt">__REG_PAY__</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Allowance / Stipend</td>
+                        <td align="center">Flat</td>
+                        <td class="amt">__OTHER_PAY__</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Federal Withholding</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__FED_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>Social Security</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__SS_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>Medicare</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__MED_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>State Withholding</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__STATE_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;">&nbsp;</td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                        <td style="border:none;"></td>
+                    </tr>
+                    <tr style="background-color: #eee; font-weight: bold;">
+                        <td colspan="2" align="right">TOTALS</td>
+                        <td class="amt">__GROSS_PAY__</td>
+                        <td class="amt">__TOTAL_DED__</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="totals-section">
+                <div class="net-pay-box">
+                    NET PAY: $__NET_PAY__
+                </div>
+            </div>
+
+            <div class="footer">
+                Keep this portion for your records. This is not a check.<br>
+                __SCHOOL_NAME__
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

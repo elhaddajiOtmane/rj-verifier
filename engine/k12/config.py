@@ -1,0 +1,67 @@
+PROGRAM_ID = '68d47554aa292d20b9bec8f7'
+SHEERID_BASE_URL = 'https://services.sheerid.com'
+MY_SHEERID_URL = 'https://my.sheerid.com'
+
+HCAPTCHA_SECRET = ''
+TURNSTILE_SECRET = ''
+MAX_FILE_SIZE = 1024 * 1024
+SCHOOLS = {
+    '3995910': {
+        'id': 3995910,
+        'idExtended': '3995910',
+        'name': 'Springfield High School (Springfield, OR)',
+        'address': '875 7th St, Springfield, OR 97477',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+    '3995271': {
+        'id': 3995271,
+        'idExtended': '3995271',
+        'name': 'Springfield High School (Springfield, OH)',
+        'address': '701 E Home Rd, Springfield, OH 45503',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+    '3992142': {
+        'id': 3992142,
+        'idExtended': '3992142',
+        'name': 'Springfield High School (Springfield, IL)',
+        'address': '101 S Lewis St, Springfield, IL 62704',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+    '3996208': {
+        'id': 3996208,
+        'idExtended': '3996208',
+        'name': 'Springfield High School (Springfield, PA)',
+        'address': '49 W Leamy Ave, Springfield, PA 19064',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+    '4015002': {
+        'id': 4015002,
+        'idExtended': '4015002',
+        'name': 'Springfield High School (Springfield, TN)',
+        'address': '5240 Hwy 76 E, Springfield, TN 37172',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+    '4015001': {
+        'id': 4015001,
+        'idExtended': '4015001',
+        'name': 'Springfield High School (Springfield, VT)',
+        'address': '303 South St, Springfield, VT 05156',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+    '4014999': {
+        'id': 4014999,
+        'idExtended': '4014999',
+        'name': 'Springfield High School (Springfield, LA)',
+        'address': '27375 LA-42, Springfield, LA 70462',
+        'country': 'US',
+        'type': 'HIGH_SCHOOL'
+    },
+}
+
+DEFAULT_SCHOOL_ID = '3995910'

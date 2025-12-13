@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Earning Statement</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+
+            color: #333;
+        }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        .header {
+            background-color: #0c5add;
+            color: white;
+            padding: 15px;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            float: left;
+        }
+
+        .header .company-info {
+            float: right;
+            text-align: right;
+            font-size: 12px;
+        }
+
+        .sub-header {
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-bottom: 2px solid #ddd;
+            overflow: hidden;
+        }
+
+        .employee-info,
+        .pay-info {
+            width: 48%;
+            float: left;
+            font-size: 14px;
+        }
+
+        .pay-info {
+            text-align: right;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background-color: #0c5add;
+            color: white;
+            text-align: center;
+        }
+
+        td.amount {
+            text-align: right;
+        }
+
+        .total-row {
+            background-color: #e6e8ec;
+            font-weight: bold;
+        }
+
+        .net-pay-section {
+            margin-top: 20px;
+            background-color: #d5e2f8;
+            padding: 15px;
+            text-align: right;
+            border: 1px solid #0c5add;
+        }
+
+        .net-pay-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .net-pay-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0c5add;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 10px;
+            color: #777;
+        }
+
+        .logo-box {
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 4px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>EARNINGS STATEMENT</h1>
+            <div class="company-info">
+                <strong>__SCHOOL_NAME__</strong><br>
+                __SCHOOL_ADDRESS__<br>
+                Human Resources
+            </div>
+        </div>
+
+        <div class="sub-header">
+            <div class="employee-info">
+                <strong>Employee:</strong> __EMP_NAME__<br>
+                <strong>ID:</strong> __EMP_ID__<br>
+                <strong>Dep:</strong> Faculty / Teaching Staff
+            </div>
+            <div class="pay-info">
+                <strong>Pay Date:</strong> __PAY_DATE__<br>
+                <strong>Period:</strong> __PERIOD_START__ - __PERIOD_END__<br>
+                <strong>Advice #:</strong> __ADVICE_ID__
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">EARNINGS</th>
+                    <th colspan="2">DEDUCTIONS</th>
+                </tr>
+                <tr>
+                    <th style="background-color: #5a8bd6; font-size: 11px;">Description</th>
+                    <th style="background-color: #5a8bd6; font-size: 11px;">Amount</th>
+                    <th style="background-color: #5a8bd6; font-size: 11px;">Description</th>
+                    <th style="background-color: #5a8bd6; font-size: 11px;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Regular Earnings (Rate: $__HOURLY_RATE__ / Hr: __HOURS_WORKED__)</td>
+                    <td class="amount">__REG_PAY__</td>
+                    <td>Federal Tax</td>
+                    <td class="amount">__FED_TAX__</td>
+                </tr>
+                <tr>
+                    <td>Stipend / Adjustments</td>
+                    <td class="amount">__OTHER_PAY__</td>
+                    <td>Social Security</td>
+                    <td class="amount">__SS_TAX__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Medicare</td>
+                    <td class="amount">__MED_TAX__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>State Tax</td>
+                    <td class="amount">__STATE_TAX__</td>
+                </tr>
+                <tr style="height: 50px;">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="total-row">
+                    <td>GROSS PAY</td>
+                    <td class="amount">__GROSS_PAY__</td>
+                    <td>TOTAL DEDUCTIONS</td>
+                    <td class="amount">__TOTAL_DED__</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="net-pay-section">
+            <span class="net-pay-label">NET PAY DISTRIBUTION:</span>
+            <span class="net-pay-amount">$__NET_PAY__</span>
+        </div>
+        <div class="footer">
+            This is a system generated statement.<br> Any questions regarding this statement should be directed to the
+            Payroll Department.<br><br>
+            __SCHOOL_NAME__<br><br><br>
+
+        </div>
+    </div>
+</body>
+
+</html>

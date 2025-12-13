@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earnings Statement</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            width: 100% !important;
+            margin: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            background-color: #fff;
+            color: #000000;
+            font-family: "Open Sans", "Source Sans Pro", Arial, sans-serif;
+        }
+
+        .payslip-box {
+            max-width: 800px;
+            background-color: #fff;
+            margin: auto;
+            border: 1px solid #eee;
+            padding: 30px;
+            font-size: 14px;
+            font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table,
+        th,
+        td {
+            text-align: left;
+            padding: 2px;
+        }
+
+        table.table th,
+        table.table td {
+            padding: 12px;
+        }
+
+        table.table th {
+            font-weight: 600;
+            font-size: 14px;
+            border-top: 2px solid #cfcfcf;
+            border-bottom: 2px solid #cfcfcf;
+            background-color: #f9f9f9;
+        }
+
+        table.table tfoot td {
+            font-weight: 600;
+            border-top: 2px solid #cfcfcf;
+            font-size: 15px;
+        }
+
+        img.company-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .border-bottom {
+            border-bottom: 2px solid #cfcfcf;
+        }
+
+        .mb-5 {
+            margin-bottom: 5px;
+        }
+
+        .mr-5 {
+            margin-right: 5px;
+        }
+
+        .pt-0 {
+            padding-top: 0;
+        }
+
+        .pb-0 {
+            padding-bottom: 0;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .valign-bottom {
+            vertical-align: bottom;
+        }
+
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+
+        .font-18 {
+            font-size: 18px;
+        }
+
+        .font-22 {
+            font-size: 22px;
+        }
+
+        .font-38 {
+            font-size: 32px;
+        }
+
+        .table th:not(:first-child),
+        .table td:not(:first-child) {
+            text-align: right;
+        }
+
+        .net-payable {
+            background-color: #f3f8ff;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #dcdcdc;
+        }
+
+        .net-payable .text {
+            padding-right: 10px;
+            font-size: 20px;
+            vertical-align: middle;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="payslip-box">
+        <table class="border-bottom" cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
+            <tbody>
+                <tr>
+                    <td class="pt-0 valign-bottom" style="width: 70%;">
+                        <div class="mb-5">
+                            <b class="font-22">__SCHOOL_NAME__</b>
+                        </div>
+                        <div>__SCHOOL_ADDRESS__</div>
+                        <div style="margin-top: 5px; color: #666;">Human Resources / Payroll Dept.</div>
+                    </td>
+                    <td class="pb-0 pt-0 text-right" style="vertical-align: top;">
+                        <img src="__LOGO_DATA_URI__" alt="School Logo" class="company-icon">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table cellspacing="0" cellpadding="0" style="margin-bottom: 20px;">
+            <tbody>
+                <tr>
+                    <td colspan="4" style="padding-bottom: 5px;">
+                        <b class="font-22">Payslip for the month of <span>__PAY_MONTH__</span></b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pb-0" colspan="2">
+                        <div class="mb-5">
+                            <b class="font-18 text-uppercase">__EMP_NAME__</b>
+                        </div>
+                        <div>
+                            <span>Teacher / Faculty</span>
+                            <span> | Emp ID: <b>__EMP_ID__</b></span>
+                        </div>
+                    </td>
+                    <td colspan="2" class="text-right valign-bottom">
+                        <div class="mb-5" style="font-size: 13px; color: #555;">
+                            Pay Date: <b>__PAY_DATE__</b><br>
+                            Pay Period: <span>__PERIOD_START__</span> - <span>__PERIOD_END__</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table" cellspacing="0" cellpadding="0" style="margin-bottom: 30px;">
+            <thead>
+                <tr>
+                    <th style="width: 35%;">EARNINGS</th>
+                    <th style="width: 15%;">AMOUNT</th>
+                    <th style="width: 35%;">DEDUCTIONS</th>
+                    <th style="width: 15%;">AMOUNT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Regular Pay</td>
+                    <td>__REG_PAY__</td>
+                    <td>Federal Income Tax</td>
+                    <td>__FED_TAX__</td>
+                </tr>
+                <tr>
+                    <td>Stipend / Other</td>
+                    <td>__OTHER_PAY__</td>
+                    <td>Social Security</td>
+                    <td>__SS_TAX__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Medicare</td>
+                    <td>__MED_TAX__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>State Income Tax</td>
+                    <td>__STATE_TAX__</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Gross Earnings</td>
+                    <td>__GROSS_PAY__</td>
+                    <td>Total Deductions</td>
+                    <td>__TOTAL_DED__</td>
+                </tr>
+            </tfoot>
+        </table>
+        <table class="page-break-inside-avoid">
+            <tbody>
+                <tr>
+                    <td class="net-payable">
+                        <div class="mb-5">
+                            <span class="text">Total Net Payable</span>
+                            <span class="font-38" style="color: #000;">$__NET_PAY__</span>
+                        </div>
+                        <div class="calculation-text">Advice # <span>__ADVICE_ID__</span> | Official Statement of
+                            Earnings</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin-top: 30px; color: #999; font-size: 11px;">
+            This document is computer generated and requires no signature.
+        </div>
+    </div>
+</body>
+
+</html>

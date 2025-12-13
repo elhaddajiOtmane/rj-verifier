@@ -1,0 +1,29 @@
+# Node.js
+node_modules/
+dist/
+dist_electron/
+release/
+build/
+engine/dist/
+engine/build/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Electron
+out/
+.electron-vite/
+
+# Local Config
+config.json
+*.log
+doc_backup verifier/
+doc_generated/
+
+# OS
+.DS_Store
+Thumbs.db
