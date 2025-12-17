@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>PAYROLL STATEMENT</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -12,15 +14,15 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 11px;
             color: #000;
             background: #fff;
-            padding: 20px;
+            padding: 12px 18px;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 800px;
             margin: 0 auto;
             background: #fff;
         }
@@ -29,14 +31,13 @@
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             margin-bottom: 8px;
         }
 
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .logo-img {
@@ -45,20 +46,31 @@
             object-fit: contain;
         }
 
-        .logo-text {
-            font-size: 9px;
+        .logo-text-block {
+            font-size: 8px;
+            line-height: 1.1;
+        }
+
+        .logo-text-block .nyc {
             font-weight: bold;
-            line-height: 1.2;
+            font-size: 14px;
+        }
+
+        .logo-text-block .dept {
+            font-size: 8px;
         }
 
         .header-title {
-            font-size: 18px;
+            flex: 1;
+            text-align: center;
+            font-size: 22px;
             font-weight: bold;
             letter-spacing: 0.5px;
+            margin-left: 20px;
         }
 
         .header-date {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
         }
 
@@ -70,8 +82,9 @@
         }
 
         .emp-cell {
-            padding: 3px 8px;
+            padding: 2px 6px;
             border-right: 1px solid #000;
+            font-size: 9px;
         }
 
         .emp-cell:last-child {
@@ -79,23 +92,23 @@
         }
 
         .emp-cell.name {
-            flex: 2;
+            width: 20%;
         }
 
         .emp-cell.id {
-            flex: 1;
+            width: 12%;
         }
 
         .emp-cell.file {
-            flex: 1;
+            width: 12%;
         }
 
         .emp-cell.title {
-            flex: 2;
+            width: 24%;
         }
 
         .emp-cell.period {
-            flex: 2;
+            width: 32%;
             text-align: right;
         }
 
@@ -103,34 +116,33 @@
             font-size: 8px;
             font-weight: bold;
             color: #555;
+            text-transform: uppercase;
         }
 
         .emp-value {
             font-size: 10px;
-            font-weight: 500;
         }
 
-        /* Main Content - Side by Side */
+        /* Main Content */
         .main-content {
             display: flex;
-            gap: 0;
         }
 
         .earnings-box {
-            flex: 1;
+            width: 36%;
         }
 
         .deductions-box {
-            flex: 1.8;
+            width: 64%;
         }
 
         /* Section Headers */
         .section-header {
-            background: #333;
+            background: #555;
             color: #fff;
             font-weight: bold;
             font-size: 10px;
-            padding: 4px 8px;
+            padding: 3px 6px;
             text-align: center;
         }
 
@@ -142,9 +154,9 @@
         }
 
         th {
-            background: #e5e5e5;
+            background: #e8e8e8;
             border: 1px solid #999;
-            padding: 3px 4px;
+            padding: 2px 4px;
             font-size: 8px;
             font-weight: bold;
             text-align: center;
@@ -152,7 +164,7 @@
 
         td {
             border: 1px solid #bbb;
-            padding: 2px 4px;
+            padding: 1px 4px;
             font-size: 9px;
         }
 
@@ -170,42 +182,40 @@
         }
 
         .leave-header {
-            background: #333;
+            background: #555;
             color: #fff;
             font-weight: bold;
             font-size: 10px;
-            padding: 4px 8px;
-            width: 180px;
+            padding: 3px 6px;
+            width: 160px;
         }
 
         .leave-table {
-            width: 180px;
+            width: 160px;
+            border: 1px solid #999;
         }
 
         .leave-table td {
-            padding: 2px 6px;
+            padding: 1px 5px;
+            border: 1px solid #bbb;
+            font-size: 9px;
         }
 
         /* Totals Row */
         .totals-row {
             display: flex;
             margin-top: 8px;
-            border: 1px solid #000;
         }
 
         .total-cell {
             flex: 1;
             text-align: center;
-            padding: 4px;
-            border-right: 1px solid #000;
-        }
-
-        .total-cell:last-child {
-            border-right: none;
+            border: 1px solid #000;
+            margin-right: -1px;
         }
 
         .total-label {
-            background: #333;
+            background: #555;
             color: #fff;
             font-size: 9px;
             font-weight: bold;
@@ -213,10 +223,9 @@
         }
 
         .total-value {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
             padding: 4px;
-            border-top: 1px solid #000;
         }
 
         /* Barcode & Footer */
@@ -228,16 +237,8 @@
         }
 
         .barcode {
-            font-family: 'Libre Barcode 39', monospace;
-            font-size: 32px;
-            letter-spacing: -2px;
-        }
-
-        .barcode-text {
-            font-family: monospace;
-            font-size: 9px;
-            letter-spacing: 2px;
-            margin-top: 2px;
+            font-family: 'Libre Barcode 39', cursive;
+            font-size: 40px;
         }
 
         .official-text {
@@ -253,8 +254,7 @@
         <!-- Header -->
         <div class="header">
             <div class="logo-section">
-                <img src="__LOGO_DATA_URI__" alt="NYC" class="logo-img">
-                <div class="logo-text">NYC<br>Department of<br>Education</div>
+                <img src="__LOGO_DATA_URI__" alt="NYC DOE" class="logo-img" style="width: 120px; height: auto;">
             </div>
             <div class="header-title">DEPARTMENT OF EDUCATION - PAYROLL STATEMENT</div>
             <div class="header-date">__PAY_DATE__</div>
@@ -292,9 +292,9 @@
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>HOURS</th>
-                            <th>AMOUNT</th>
+                            <th style="width:48%"></th>
+                            <th style="width:26%">HOURS</th>
+                            <th style="width:26%">AMOUNT</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -333,11 +333,11 @@
                 <table>
                     <thead>
                         <tr>
-                            <th></th>
-                            <th>FEDERAL</th>
-                            <th>STATE</th>
-                            <th>CITY</th>
-                            <th>OTHER</th>
+                            <th style="width:30%"></th>
+                            <th style="width:17.5%">FEDERAL</th>
+                            <th style="width:17.5%">STATE</th>
+                            <th style="width:17.5%">CITY</th>
+                            <th style="width:17.5%">OTHER</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -399,28 +399,28 @@
                         </tr>
                         <tr>
                             <td>GHI-CBP HEALTH</td>
-                            <td></td>
-                            <td></td>
                             <td class="text-right">$__HEALTH_INS__</td>
+                            <td></td>
+                            <td></td>
                             <td class="text-right">$__HEALTH_INS__</td>
                         </tr>
                         <tr>
                             <td>TRS 414H</td>
-                            <td></td>
+                            <td class="text-right">$__TRS_414H__</td>
                             <td></td>
                             <td></td>
                             <td class="text-right">$__TRS_414H__</td>
                         </tr>
                         <tr>
                             <td>NYS PAID FAMILY LEAVE</td>
-                            <td></td>
+                            <td class="text-right">$__NYS_PFL__</td>
                             <td></td>
                             <td></td>
                             <td class="text-right">$__NYS_PFL__</td>
                         </tr>
                         <tr>
                             <td>UNION WELFARE FUND</td>
-                            <td></td>
+                            <td class="text-right">$__UNION_WELFARE__</td>
                             <td></td>
                             <td></td>
                             <td class="text-right">$__UNION_WELFARE__</td>
@@ -465,9 +465,7 @@
 
         <!-- Barcode & Footer -->
         <div class="footer-row">
-            <div>
-                <div class="barcode">||| |||| ||| |||| ||| |||| ||| |||| ||| ||||</div>
-            </div>
+            <div class="barcode">*__EMP_ID____FILE_NUMBER__*</div>
             <div class="official-text">OFFICIAL PAYROLL DOCUMENT</div>
         </div>
     </div>

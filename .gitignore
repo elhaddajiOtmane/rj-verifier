@@ -31,3 +31,5 @@ Thumbs.db
 .gitignore
 
 v.*/
+*.pdf
+*.pdf
