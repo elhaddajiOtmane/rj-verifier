@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PAYROLL STATEMENT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #000;
+            background: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: #fff;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 9px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .header-date {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Employee Info Row */
+        .employee-row {
+            display: flex;
+            border: 1px solid #000;
+            margin-bottom: 6px;
+        }
+
+        .emp-cell {
+            padding: 3px 8px;
+            border-right: 1px solid #000;
+        }
+
+        .emp-cell:last-child {
+            border-right: none;
+        }
+
+        .emp-cell.name {
+            flex: 2;
+        }
+
+        .emp-cell.id {
+            flex: 1;
+        }
+
+        .emp-cell.file {
+            flex: 1;
+        }
+
+        .emp-cell.title {
+            flex: 2;
+        }
+
+        .emp-cell.period {
+            flex: 2;
+            text-align: right;
+        }
+
+        .emp-label {
+            font-size: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .emp-value {
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        /* Main Content - Side by Side */
+        .main-content {
+            display: flex;
+            gap: 0;
+        }
+
+        .earnings-box {
+            flex: 1;
+        }
+
+        .deductions-box {
+            flex: 1.8;
+        }
+
+        /* Section Headers */
+        .section-header {
+            background: #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 10px;
+            padding: 4px 8px;
+            text-align: center;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+
+        th {
+            background: #e5e5e5;
+            border: 1px solid #999;
+            padding: 3px 4px;
+            font-size: 8px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid #bbb;
+            padding: 2px 4px;
+            font-size: 9px;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Leave Balances */
+        .leave-section {
+            margin-top: 6px;
+        }
+
+        .leave-header {
+            background: #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 10px;
+            padding: 4px 8px;
+            width: 180px;
+        }
+
+        .leave-table {
+            width: 180px;
+        }
+
+        .leave-table td {
+            padding: 2px 6px;
+        }
+
+        /* Totals Row */
+        .totals-row {
+            display: flex;
+            margin-top: 8px;
+            border: 1px solid #000;
+        }
+
+        .total-cell {
+            flex: 1;
+            text-align: center;
+            padding: 4px;
+            border-right: 1px solid #000;
+        }
+
+        .total-cell:last-child {
+            border-right: none;
+        }
+
+        .total-label {
+            background: #333;
+            color: #fff;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 3px;
+        }
+
+        .total-value {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px;
+            border-top: 1px solid #000;
+        }
+
+        /* Barcode & Footer */
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 12px;
+        }
+
+        .barcode {
+            font-family: 'Libre Barcode 39', monospace;
+            font-size: 32px;
+            letter-spacing: -2px;
+        }
+
+        .barcode-text {
+            font-family: monospace;
+            font-size: 9px;
+            letter-spacing: 2px;
+            margin-top: 2px;
+        }
+
+        .official-text {
+            font-weight: bold;
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- __NYC_STYLE__ -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <img src="__LOGO_DATA_URI__" alt="NYC" class="logo-img">
+                <div class="logo-text">NYC<br>Department of<br>Education</div>
+            </div>
+            <div class="header-title">DEPARTMENT OF EDUCATION - PAYROLL STATEMENT</div>
+            <div class="header-date">__PAY_DATE__</div>
+        </div>
+
+        <!-- Employee Info Row -->
+        <div class="employee-row">
+            <div class="emp-cell name">
+                <div class="emp-label">EMPLOYEE NAME</div>
+                <div class="emp-value">__EMP_NAME__</div>
+            </div>
+            <div class="emp-cell id">
+                <div class="emp-label">EMPLOYEE ID</div>
+                <div class="emp-value">__EMP_ID__</div>
+            </div>
+            <div class="emp-cell file">
+                <div class="emp-label">FILE NUMBER</div>
+                <div class="emp-value">__FILE_NUMBER__</div>
+            </div>
+            <div class="emp-cell title">
+                <div class="emp-label">TITLE</div>
+                <div class="emp-value">__JOB_TITLE__</div>
+            </div>
+            <div class="emp-cell period">
+                <div class="emp-label">PAY PERIOD</div>
+                <div class="emp-value">__PERIOD_START__ - __PERIOD_END__</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Earnings -->
+            <div class="earnings-box">
+                <div class="section-header">EARNINGS</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>HOURS</th>
+                            <th>AMOUNT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>REGULAR GROSS</td>
+                            <td class="text-center">__REGULAR_HOURS__</td>
+                            <td class="text-right">$__REGULAR_GROSS__</td>
+                        </tr>
+                        <tr>
+                            <td>PER SESSION</td>
+                            <td class="text-center">__PER_SESSION_HOURS__</td>
+                            <td class="text-right">$__PER_SESSION_PAY__</td>
+                        </tr>
+                        <tr>
+                            <td>COVERAGE</td>
+                            <td class="text-center">__COVERAGE_HOURS__</td>
+                            <td class="text-right">$__COVERAGE_PAY__</td>
+                        </tr>
+                        <tr>
+                            <td>MA DIFFERENTIAL</td>
+                            <td class="text-center"></td>
+                            <td class="text-right">$__MA_DIFFERENTIAL__</td>
+                        </tr>
+                        <tr>
+                            <td>LONGEVITY PAY</td>
+                            <td class="text-center"></td>
+                            <td class="text-right">$__LONGEVITY_PAY__</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Deductions -->
+            <div class="deductions-box">
+                <div class="section-header">DEDUCTIONS</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>FEDERAL</th>
+                            <th>STATE</th>
+                            <th>CITY</th>
+                            <th>OTHER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>FEDERAL TAX</td>
+                            <td class="text-right">$__FED_TAX__</td>
+                            <td class="text-right">$__FED_TAX__</td>
+                            <td class="text-right">$__FED_TAX__</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>STATE TAX</td>
+                            <td class="text-right">$__STATE_TAX__</td>
+                            <td class="text-right">$__STATE_TAX__</td>
+                            <td class="text-right">$__STATE_TAX__</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>CITY TAX</td>
+                            <td class="text-right">$__CITY_TAX__</td>
+                            <td class="text-right">$__CITY_TAX__</td>
+                            <td class="text-right">$__CITY_TAX__</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>SOCIAL SECURITY</td>
+                            <td class="text-right">$__SS_TAX__</td>
+                            <td class="text-right">$__SS_TAX__</td>
+                            <td class="text-right">$__SS_TAX__</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>MEDICARE</td>
+                            <td class="text-right">$__MED_TAX__</td>
+                            <td class="text-right">$__MED_TAX__</td>
+                            <td class="text-right">$__MED_TAX__</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>UFT DUES</td>
+                            <td class="text-right">$__UFT_DUES__</td>
+                            <td class="text-right">$__UFT_DUES__</td>
+                            <td class="text-right">$__UFT_DUES__</td>
+                            <td class="text-right">$__UFT_DUES__</td>
+                        </tr>
+                        <tr>
+                            <td>QPP PENSION</td>
+                            <td class="text-right">$__QPP_PENSION__</td>
+                            <td class="text-right">$__QPP_PENSION__</td>
+                            <td class="text-right">$__QPP_PENSION__</td>
+                            <td class="text-right">$__QPP_PENSION__</td>
+                        </tr>
+                        <tr>
+                            <td>TDA CONTRIBUTION</td>
+                            <td class="text-right">$__TDA_CONTRIBUTION__</td>
+                            <td class="text-right">$__TDA_CONTRIBUTION__</td>
+                            <td class="text-right">$__TDA_CONTRIBUTION__</td>
+                            <td class="text-right">$__TDA_CONTRIBUTION__</td>
+                        </tr>
+                        <tr>
+                            <td>GHI-CBP HEALTH</td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">$__HEALTH_INS__</td>
+                            <td class="text-right">$__HEALTH_INS__</td>
+                        </tr>
+                        <tr>
+                            <td>TRS 414H</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">$__TRS_414H__</td>
+                        </tr>
+                        <tr>
+                            <td>NYS PAID FAMILY LEAVE</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">$__NYS_PFL__</td>
+                        </tr>
+                        <tr>
+                            <td>UNION WELFARE FUND</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right">$__UNION_WELFARE__</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Leave Balances -->
+        <div class="leave-section">
+            <div class="leave-header">LEAVE BALANCES</div>
+            <table class="leave-table">
+                <tbody>
+                    <tr>
+                        <td>CAR DAYS</td>
+                        <td class="text-right">__CAR_DAYS__</td>
+                    </tr>
+                    <tr>
+                        <td>ANNUAL LEAVE</td>
+                        <td class="text-right">__ANNUAL_LEAVE__</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Totals -->
+        <div class="totals-row">
+            <div class="total-cell">
+                <div class="total-label">GROSS PAY</div>
+                <div class="total-value">$__GROSS_PAY__</div>
+            </div>
+            <div class="total-cell">
+                <div class="total-label">TOTAL DEDUCTIONS</div>
+                <div class="total-value">$__TOTAL_DED__</div>
+            </div>
+            <div class="total-cell">
+                <div class="total-label">NET PAY</div>
+                <div class="total-value">$__NET_PAY__</div>
+            </div>
+        </div>
+
+        <!-- Barcode & Footer -->
+        <div class="footer-row">
+            <div>
+                <div class="barcode">||| |||| ||| |||| ||| |||| ||| |||| ||| ||||</div>
+            </div>
+            <div class="official-text">OFFICIAL PAYROLL DOCUMENT</div>
+        </div>
+    </div>
+</body>
+
+</html>

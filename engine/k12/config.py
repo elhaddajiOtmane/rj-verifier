@@ -101,6 +101,14 @@ SCHOOLS = {
         'country': 'US',
         'type': 'HIGH_SCHOOL'
     },
+    '9999999': {
+        'id': 9999999,
+        'idExtended': '9999999',
+        'name': 'Hudson County Community College',
+        'address': '70 Sip Ave, Jersey City, NJ 07306',
+        'country': 'US',
+        'type': 'COMMUNITY_COLLEGE'
+    },
 }
 
 DEFAULT_SCHOOL_ID = '3995910'

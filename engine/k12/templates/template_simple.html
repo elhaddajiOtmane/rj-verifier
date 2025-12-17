@@ -123,12 +123,14 @@
                 <div>
                     <div class="info-item"><span class="label">EMPLOYEE:</span> <span>__EMP_NAME__</span></div>
                     <div class="info-item"><span class="label">EMP ID:</span> <span>__EMP_ID__</span></div>
-                    <div class="info-item"><span class="label">DEPT:</span> <span>ACADEMIC</span></div>
+                    <div class="info-item"><span class="label">DEPT:</span> <span>__DEPARTMENT__</span></div>
+                    <div class="info-item"><span class="label">POSITION:</span> <span>__POSITION__</span></div>
                 </div>
                 <div>
                     <div class="info-item"><span class="label">PAY DATE:</span> <span>__PAY_DATE__</span></div>
                     <div class="info-item"><span class="label">PERIOD:</span> <span>__PERIOD_START__ to
                             __PERIOD_END__</span></div>
+                    <div class="info-item"><span class="label">FREQUENCY:</span> <span>__PAY_FREQUENCY__</span></div>
                     <div class="info-item"><span class="label">CHECK NO:</span> <span>__ADVICE_ID__</span></div>
                 </div>
             </div>
@@ -180,6 +182,30 @@
                         <td class="amt">__STATE_TAX__</td>
                     </tr>
                     <tr>
+                        <td>Health Insurance</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__HEALTH_INS__</td>
+                    </tr>
+                    <tr>
+                        <td>Dental Insurance</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__DENTAL_INS__</td>
+                    </tr>
+                    <tr>
+                        <td>Vision Insurance</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__VISION_INS__</td>
+                    </tr>
+                    <tr>
+                        <td>Retirement (403b)</td>
+                        <td></td>
+                        <td></td>
+                        <td class="amt">__RETIREMENT__</td>
+                    </tr>
+                    <tr>
                         <td style="border:none;">&nbsp;</td>
                         <td style="border:none;"></td>
                         <td style="border:none;"></td>
@@ -198,6 +224,48 @@
                     NET PAY: $__NET_PAY__
                 </div>
             </div>
+
+            <table style="margin-top: 20px; margin-bottom: 20px;">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="background-color: #eee; text-align: center; padding: 8px;">YEAR-TO-DATE SUMMARY</th>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <th style="text-align: right;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gross Earnings (YTD)</td>
+                        <td class="amt">__YTD_GROSS__</td>
+                    </tr>
+                    <tr>
+                        <td>Federal Tax (YTD)</td>
+                        <td class="amt">__YTD_FED_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>Social Security (YTD)</td>
+                        <td class="amt">__YTD_SS_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>Medicare (YTD)</td>
+                        <td class="amt">__YTD_MED_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>State Tax (YTD)</td>
+                        <td class="amt">__YTD_STATE_TAX__</td>
+                    </tr>
+                    <tr>
+                        <td>Total Deductions (YTD)</td>
+                        <td class="amt">__YTD_DEDUCTIONS__</td>
+                    </tr>
+                    <tr style="background-color: #eee; font-weight: bold;">
+                        <td>Net Pay (YTD)</td>
+                        <td class="amt">__YTD_NET__</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <div class="footer">
                 Keep this portion for your records. This is not a check.<br>

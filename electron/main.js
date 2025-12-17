@@ -106,7 +106,8 @@ function runPythonCommand(action, data, resolve, reject) {
         const engineDir = path.join(process.resourcesPath, 'engine');
         args = ['--action', action, '--basedir', engineDir];
     } else {
-        cmd = 'python';
+        // Use Laragon's Python or system python
+        cmd = 'C:\\laragon\\bin\\python\\python-3.13\\python.exe';
         const scriptPath = path.join(__dirname, '../engine/main.py');
         args = [scriptPath, '--action', action];
     }

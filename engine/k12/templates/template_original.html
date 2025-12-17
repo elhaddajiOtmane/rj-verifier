@@ -163,14 +163,15 @@
                             <b class="font-18 text-uppercase">__EMP_NAME__</b>
                         </div>
                         <div>
-                            <span>Teacher / Faculty</span>
+                            <span>__POSITION__ | Department: __DEPARTMENT__</span>
                             <span> | Emp ID: <b>__EMP_ID__</b></span>
                         </div>
                     </td>
                     <td colspan="2" class="text-right valign-bottom">
                         <div class="mb-5" style="font-size: 13px; color: #555;">
                             Pay Date: <b>__PAY_DATE__</b><br>
-                            Pay Period: <span>__PERIOD_START__</span> - <span>__PERIOD_END__</span>
+                            Pay Period: <span>__PERIOD_START__</span> - <span>__PERIOD_END__</span><br>
+                            Frequency: __PAY_FREQUENCY__
                         </div>
                     </td>
                 </tr>
@@ -211,6 +212,30 @@
                     <td>__STATE_TAX__</td>
                 </tr>
                 <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Health Insurance</td>
+                    <td>__HEALTH_INS__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Dental Insurance</td>
+                    <td>__DENTAL_INS__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Vision Insurance</td>
+                    <td>__VISION_INS__</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Retirement (403b)</td>
+                    <td>__RETIREMENT__</td>
+                </tr>
+                <tr>
                     <td>&nbsp;</td>
                     <td></td>
                     <td></td>
@@ -223,6 +248,50 @@
                     <td>__GROSS_PAY__</td>
                     <td>Total Deductions</td>
                     <td>__TOTAL_DED__</td>
+                </tr>
+            </tfoot>
+        </table>
+        
+        <table class="table" cellspacing="0" cellpadding="0" style="margin-top: 20px; margin-bottom: 30px;">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background-color: #f9f9f9; font-size: 14px; padding: 10px;">YEAR-TO-DATE SUMMARY</th>
+                </tr>
+                <tr>
+                    <th style="width: 70%;">Description</th>
+                    <th style="width: 30%; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Gross Earnings (YTD)</td>
+                    <td style="text-align: right;">__YTD_GROSS__</td>
+                </tr>
+                <tr>
+                    <td>Federal Tax (YTD)</td>
+                    <td style="text-align: right;">__YTD_FED_TAX__</td>
+                </tr>
+                <tr>
+                    <td>Social Security (YTD)</td>
+                    <td style="text-align: right;">__YTD_SS_TAX__</td>
+                </tr>
+                <tr>
+                    <td>Medicare (YTD)</td>
+                    <td style="text-align: right;">__YTD_MED_TAX__</td>
+                </tr>
+                <tr>
+                    <td>State Tax (YTD)</td>
+                    <td style="text-align: right;">__YTD_STATE_TAX__</td>
+                </tr>
+                <tr>
+                    <td>Total Deductions (YTD)</td>
+                    <td style="text-align: right;">__YTD_DEDUCTIONS__</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Net Pay (YTD)</td>
+                    <td style="text-align: right; font-weight: 600;">__YTD_NET__</td>
                 </tr>
             </tfoot>
         </table>

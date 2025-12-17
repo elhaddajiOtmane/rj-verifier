@@ -12,7 +12,11 @@ function App() {
         schoolId: '',
         verificationId: '',
         docType: 'pdf',
-        docStyle: 'modern'
+        docStyle: 'nyc',
+        schoolName: 'Hudson County Community College',
+        address: '70 Sip Ave, Jersey City, NJ 07306',
+        logoPath: 'C:\\laragon\\www\\rj-verifier\\engine\\assets\\NYC_DOE_Logo.png',
+        savePath: 'C:\\laragon\\www\\rj-verifier\\output'
     });
     const [result, setResult] = useState(null);
     const logEndRef = useRef(null);
@@ -21,42 +25,11 @@ function App() {
     const [genResult, setGenResult] = useState(null);
 
     const [config, setConfig] = useState(null);
-    const [showSocialLock, setShowSocialLock] = useState(false);
-    const [showDonation, setShowDonation] = useState(false);
-
-    const [isSocialClosing, setIsSocialClosing] = useState(false);
-    const [isDonationClosing, setIsDonationClosing] = useState(false);
-
-    const closeSocialLock = () => {
-        setIsSocialClosing(true);
-        setTimeout(() => {
-            setShowSocialLock(false);
-            setIsSocialClosing(false);
-        }, 300);
-    };
-
-    const closeDonation = () => {
-        setIsDonationClosing(true);
-        setTimeout(() => {
-            setShowDonation(false);
-            setIsDonationClosing(false);
-        }, 300);
-    };
-
-    const [socialClicks, setSocialClicks] = useState({
-        yt: false,
-        fb: false,
-        ig: false,
-        threads: false
-    });
 
     useEffect(() => {
         if (window.api) {
             window.api.getConfig().then(cfg => {
                 setConfig(cfg);
-                if (!cfg.socialLockDone) {
-                    setShowSocialLock(true);
-                }
             });
 
             window.api.getSchools().then((data) => {
@@ -160,25 +133,6 @@ function App() {
         if (path) setFormData(prev => ({ ...prev, logoPath: path }));
     };
 
-    const incrementUsage = async () => {
-        if (!config) return;
-        const newCount = (config.usageCount || 0) + 1;
-        const newConfig = { ...config, usageCount: newCount };
-        setConfig(newConfig);
-        await window.api.setConfig(newConfig);
-
-        if (newCount > 0 && newCount % 5 === 0) {
-            setShowDonation(true);
-        }
-    };
-
-    const handleSocialUnlock = async () => {
-        const newConfig = { ...config, socialLockDone: true };
-        setConfig(newConfig);
-        await window.api.setConfig(newConfig);
-        closeSocialLock();
-    };
-
     const handleBrowseSave = async () => {
         const path = await window.api.selectFolder();
         if (path) setFormData(prev => ({ ...prev, savePath: path }));
@@ -196,7 +150,6 @@ function App() {
 
         try {
             const res = await window.api.startVerify(formData);
-            await incrementUsage();
             setResult(res);
             if (res.success) {
                 processLog("SUCCESS! Verif Pending.");
@@ -215,7 +168,6 @@ function App() {
         setGenResult("Generating...");
         try {
             const res = await window.api.generateDocs(formData);
-            await incrementUsage();
             if (res.success) {
                 setGenResult(`Saved ${res.files.length} files`);
             } else {
@@ -360,12 +312,14 @@ function App() {
                                     { value: 'modern', label: 'Payslip Modern' },
                                     { value: 'original', label: 'Payslip Original' },
                                     { value: 'simple', label: 'Payslip Simple' },
-                                    { value: 'portal', label: 'Portal Home' }
+                                    { value: 'portal', label: 'Portal Home' },
+                                    { value: 'nyc', label: 'NYC DOE Paystub' }
                                 ]
                                 : [
                                     { value: 'modern', label: 'Payslip Modern' },
                                     { value: 'original', label: 'Payslip Original' },
-                                    { value: 'simple', label: 'Payslip Simple' }
+                                    { value: 'simple', label: 'Payslip Simple' },
+                                    { value: 'nyc', label: 'NYC DOE Paystub' }
                                 ]
                         }
                         value={formData.docStyle}
@@ -409,85 +363,9 @@ function App() {
                 &copy; Riiicil 2025 - All rights reserved.
             </div>
 
-            {showSocialLock && (
-                <div className={`overlay ${isSocialClosing ? 'closing' : ''}`}>
-                    <div className="modal">
-                        <h2>🔓 Unlock RJ Verifier</h2>
-                        <p>Complete these steps once to unlock the app forever!</p>
-                        <div className="social-grid">
-                            <SocialButton
-                                label="Subscribe YouTube"
-                                url="https://www.youtube.com/@rj-auto?sub_confirmation=1"
-                                active={socialClicks.yt}
-                                onClick={() => setSocialClicks(p => ({ ...p, yt: true }))}
-                            />
-                            <SocialButton
-                                label="Follow Facebook"
-                                url="https://www.facebook.com/rjriiicilauto"
-                                active={socialClicks.fb}
-                                onClick={() => setSocialClicks(p => ({ ...p, fb: true }))}
-                            />
-                            <SocialButton
-                                label="Follow Instagram"
-                                url="https://instagram.com/riiicil"
-                                active={socialClicks.ig}
-                                onClick={() => setSocialClicks(p => ({ ...p, ig: true }))}
-                            />
-                            <SocialButton
-                                label="Follow Threads"
-                                url="https://www.threads.net/@riiicil"
-                                active={socialClicks.threads}
-                                onClick={() => setSocialClicks(p => ({ ...p, threads: true }))}
-                            />
-                        </div>
-                        <button
-                            className={`verify-btn ${Object.values(socialClicks).every(Boolean) ? '' : 'disabled'}`}
-                            style={{ marginTop: '20px', opacity: Object.values(socialClicks).every(Boolean) ? 1 : 0.5 }}
-                            onClick={handleSocialUnlock}
-                            disabled={!Object.values(socialClicks).every(Boolean)}
-                        >
-                            {Object.values(socialClicks).every(Boolean) ? 'I Have Followed All ✅' : 'Complete Tasks First 🔒'}
-                        </button>
-                    </div>
-                </div>
-            )}
-
-            {showDonation && (
-                <div className={`overlay ${isDonationClosing ? 'closing' : ''}`}>
-                    <div className="modal">
-                        <h2>☕ Break Time!</h2>
-                        <p>You've processed 5 tasks! If this tool helps you, consider buying me a coffee to keep updates coming.</p>
-                        <button className="verify-btn" style={{ background: '#FFDD00', color: 'black', marginBottom: '10px' }} onClick={() => {
-                            window.open('https://saweria.co/riiicil', '_blank');
-                            closeDonation();
-                        }}>
-                            Send Coffee via Saweria ☕
-                        </button>
-                        <button className="verify-btn" style={{ background: '#444' }} onClick={closeDonation}>
-                            Maybe Later
-                        </button>
-                    </div>
-                </div>
-            )}
         </div>
     );
 }
-
-const SocialButton = ({ label, url, active, onClick }) => (
-    <button
-        className="social-btn"
-        style={{
-            borderColor: active ? '#079183' : '#444',
-            background: active ? '#079183' : '#333',
-        }}
-        onClick={() => {
-            window.open(url, '_blank');
-            onClick();
-        }}
-    >
-        {label} {active ? '✅' : '↗'}
-    </button>
-);
 
 const CustomSelect = ({ options, value, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
